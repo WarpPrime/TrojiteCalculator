@@ -15,15 +15,14 @@
         for (let i=0; i<3; i++) {
           for (let j=0; j<miners[i].length; j++) {
             idPrepend = (i == 0) ? 's' : ((i == 1) ? 'm' : 'l');
-            document.getElementById(`${idPrepend}${j}`).innerHTML = (Math.ceil((storageNeeded) / (miners[i][j] * downScale/10000))).toString();
+            document.getElementById(`${idPrepend}${j}`).innerHTML = (Math.ceil((storageNeeded) / (miners[i][j] * (downScale*10000)))).toString();
           }
         }
       }
     </script>
   </head>
   <body>
-    <input id='rph' type='number'>
-    <button onclick='calc()'>Calculate</button>
+    <input id='rph' type='number' onInput='calc()'>
     <div>
       <p>Small miners (0 UAV upgrades): <span id='s0'></span></p>
       <p>Small miners (1 UAV upgrades): <span id='s1'></span></p>
