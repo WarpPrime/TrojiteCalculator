@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script>
+      var downScale = 10/(9 * Math.pow(10,5)); // storage per second scale down
+      var miners = [[10000,12000,14000],[34000,40800,47600,54400],[80000,96000,112000,128000]]; // storage per hour
+      var trojiteUnit = 10; // 10 storage per trojite
+
+      var ratingPoints = 10000; // trojite per rating point
+
+      function calc() {
+        var x = document.getElementById('rph').value;
+        var storageNeeded = ratingPoints * x * trojiteUnit;
+
+        var idPrepend;
+        for (let i=0; i<3; i++) {
+          for (let j=0; j<miners[i].length; j++) {
+            idPrepend = (i == 0) ? 's' : ((i == 1) ? 'm' : 'l');
+            document.getElementById(`${idPrepend}${j}`).innerHTML = (Math.ceil((storageNeeded) / (miners[i][j] * downScale))).toString();
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input id='rph' type='number'>
+    <button onclick='calc()'>Calculate</button>
+    <div>
+      <p>Small miners (0 UAV upgrades): <span id='s0'></span></p>
+      <p>Small miners (1 UAV upgrades): <span id='s1'></span></p>
+      <p>Small miners (2 UAV upgrades): <span id='s2'></span></p>
+      
+      <p>Medium miners (0 UAV upgrades): <span id='m0'></span></p>
+      <p>Medium miners (1 UAV upgrades): <span id='m1'></span></p>
+      <p>Medium miners (2 UAV upgrades): <span id='m2'></span></p>
+      <p>Medium miners (3 UAV upgrades): <span id='m3'></span></p>
+      
+      <p>Large miners (0 UAV upgrades): <span id='l0'></span></p>
+      <p>Large miners (1 UAV upgrades): <span id='l1'></span></p>
+      <p>Large miners (2 UAV upgrades): <span id='l2'></span></p>
+      <p>Large miners (3 UAV upgrades): <span id='l3'></span></p>
+    </div>
+  </body>
+</html>
