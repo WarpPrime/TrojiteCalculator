@@ -15,7 +15,7 @@
         for (let i=0; i<3; i++) {
           for (let j=0; j<miners[i].length; j++) {
             idPrepend = (i == 0) ? 's' : ((i == 1) ? 'm' : 'l');
-            document.getElementById(`${idPrepend}${j}`).innerHTML = (Math.ceil((storageNeeded) / (miners[i][j]))).toString();
+            document.getElementById(`${idPrepend}${j}`).innerHTML = (Math.ceil((storageNeeded) / (miners[i][j] * downScale/10000))).toString();
           }
         }
       }
